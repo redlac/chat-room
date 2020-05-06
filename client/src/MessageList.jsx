@@ -9,7 +9,7 @@ export function MessageList(props){
             {
                 props.messages && 
                 props.messages.map((message, index) => 
-                <MessageListItem key={index} message={message}/>
+                <MessageListItem key={index} message={message} nickNameColor={message.name === props.nickname ? props.nickNameColor : 'black'}/>
                 )
             }
         </List>

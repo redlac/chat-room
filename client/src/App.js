@@ -9,6 +9,8 @@ function App() {
   const [message, setMessage] = useState('');
   const [name, setName] = useState('');
   const [messageReceived, setMessageReceived] = useState(false);
+  const [nickname, setNickname] = useState('anonymous');
+  const [nickNameColor, setNickNameColor] = useState('#000000');
 
   const handleChange = (inputType, event) => {
     switch (inputType) {
@@ -18,14 +20,17 @@ function App() {
       case 'message':
         setMessage(event.target.value);
         break;
+      case 'nickname':
+        setNickname(event.target.value);
+        break;
     }
   };
 
   const sendMessage = () => {
 
-
+    console.log(nickname);
     let data = {
-      'name': 'user',
+      'name': nickname,
       'message': message
     }
 
@@ -49,6 +54,8 @@ function App() {
       console.log(messages);
     });
 
+    //Set random nickname color
+    setNickNameColor(getRandomColor());
   }, []);
 
   return (
@@ -56,9 +63,23 @@ function App() {
       <ChatWindow messages={messages} 
                   handleChange={handleChange} 
                   sendMessage={sendMessage}
+                  nickNameColor={nickNameColor}
+                  nickname={nickname}
                   />
     </>
   );
 }
+
+/**
+ * Get a random hex color value.
+ */
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
 
 export default App;

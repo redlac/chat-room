@@ -9,14 +9,6 @@ app.use(index);
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-/*
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-});
-*/
-
-//app.use(express.static(path.join(__dirname, 'client/public/index.html')));
-
 io.on('connection', (socket) => {
     console.log('user connected');
     socket.emit('connection', {message: 'Connection established.'});
@@ -25,8 +17,6 @@ io.on('connection', (socket) => {
         io.emit('receivedMessage', {name: data.name, text: data.message});
     });
 });
-
-//socket.emit('message', {Calder: 'Hey how are you'});
 
 server.listen(port, () => {
     console.log(`Server running on port ${port}...`);
