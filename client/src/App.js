@@ -3,7 +3,7 @@ import socketIOClient from 'socket.io-client';
 import { ChatWindow } from './ChatWindow';
 import './scss/chat-window-styles.scss';
 
-const ENDPOINT = "http://localhost:3000";
+const ENDPOINT = "/";
 
 function App() {
   const [messages, setMessages] = useState([]);
