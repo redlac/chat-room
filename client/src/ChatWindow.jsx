@@ -4,6 +4,7 @@ import { MessageInput } from './MessageInput';
 import {SetNickname} from './SetNickname';
 import Grid from '@material-ui/core/Grid';
 import './scss/chat-window-styles.scss';
+import { Divider } from '@material-ui/core';
 
 export function ChatWindow(props) {
     console.log(props.messages);
@@ -13,16 +14,22 @@ export function ChatWindow(props) {
                 direction="column"
                 justify="center"
                 alignItems="center"
-                spacing={1}
+                spacing={3}
             >
                 <Grid container item xs>
+                    <h1>Amazing Real-Time Chat</h1>
+                </Grid>
+                <Grid container item xs={6}>
                     <SetNickname handleChange={props.handleChange} />
                 </Grid>
+                <Divider className={'chat-divider'}/>
                 <Grid container justify="center">
-                    <MessageList  messages={props.messages} nickNameColor={props.nickNameColor} nickname={props.nickname}/>
+                    {
+                            <MessageList  messages={props.messages} nickNameColor={props.nickNameColor} nickname={props.nickname} bottomMessageRef={props.bottomMessageRef}/>
+                    }
                 </Grid>
-                <Grid container item xs>
-                    <MessageInput handleChange={props.handleChange} sendMessage={props.sendMessage}/>
+                <Grid className={"message-input"} container item xs>
+                    <MessageInput  handleChange={props.handleChange} sendMessage={props.sendMessage}/>
                 </Grid>
             </Grid>
         </>

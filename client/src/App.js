@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import socketIOClient from 'socket.io-client';
 import { ChatWindow } from './ChatWindow';
+import './scss/chat-window-styles.scss';
+
 const ENDPOINT = "http://localhost:3000";
 
 function App() {
@@ -11,6 +13,8 @@ function App() {
   const [messageReceived, setMessageReceived] = useState(false);
   const [nickname, setNickname] = useState('anonymous');
   const [nickNameColor, setNickNameColor] = useState('#000000');
+
+  const bottomMessage = useRef(null);
 
   const handleChange = (inputType, event) => {
     switch (inputType) {
@@ -58,6 +62,13 @@ function App() {
     setNickNameColor(getRandomColor());
   }, []);
 
+  useEffect(() => {
+    console.log("new message");
+    if (bottomMessage.current != null){
+      bottomMessage.current.scrollIntoView();
+    }
+  }, [messageReceived]);
+
   return (
     <>
       <ChatWindow messages={messages} 
@@ -65,6 +76,7 @@ function App() {
                   sendMessage={sendMessage}
                   nickNameColor={nickNameColor}
                   nickname={nickname}
+                  bottomMessageRef={bottomMessage}
                   />
     </>
   );

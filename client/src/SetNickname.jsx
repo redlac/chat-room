@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import FaceIcon from '@material-ui/icons/Face';
+import './scss/chat-window-styles.scss';
 
 export function SetNickname(props) {
 
@@ -18,8 +19,8 @@ export function SetNickname(props) {
                   alignItems="center"
                   spacing={4}
                   >
-                  <Grid item xs={6}>
-                <TextField id="outlined-basic" label="Enter a nickname here" variant="outlined" size="small" fullWidth onChange={e => handleChange('nickname', e)} />
+                  <Grid container item justify="center">
+                <TextField className={"nickname-field"} label="Enter a nickname here" variant="outlined" size="small" onChange={e => handleChange('nickname', e)}/>
                 </Grid>
                   <Grid item >
                 </Grid>

@@ -13,22 +13,22 @@ export function MessageInput(props) {
     return (
         <>
             <Grid container
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                  spacing={4}
-                  >
-                  <Grid item xs={6}>
-                <TextField id="outlined-basic" label="Enter message here" variant="outlined" size="small" fullWidth onChange={e => handleChange('message', e)} />
+                direction="row"
+                justify="center"
+                alignItems="center"
+                spacing={4}
+            >
+                <Grid item xs={6}>
+                    <TextField id="outlined-basic" label="Enter message here" variant="outlined" size="small" fullWidth onChange={e => handleChange('message', e)} />
                 </Grid>
-                  <Grid item >
-                <Button
-                    variant="contained"
-                    color="primary"
-                    endIcon={<SendIcon />}
-                    onClick={() => props.sendMessage()}
-                >
-                   Send 
+                <Grid item >
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        endIcon={<SendIcon />}
+                        onClick={() => props.sendMessage()}
+                    >
+                        Send
                 </Button>
                 </Grid>
             </Grid>

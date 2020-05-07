@@ -22,7 +22,7 @@ export function MessageListItem(props) {
     const classes = useStyles();
 
     return (
-        <ListItem divider> 
+        <ListItem divider ref={props.bottomMessageRef}> 
                     <ListItemAvatar>
                         <Avatar alt="user" src="https://www.selfstir.com/wp-content/uploads/2015/11/default-user.png" />
                     </ListItemAvatar>
