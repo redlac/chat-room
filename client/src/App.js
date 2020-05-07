@@ -71,7 +71,7 @@ function App() {
   }, [messageReceived]);
 
   return (
-    <>
+    <div className="app-container">
       <h1>Amazing Real-Time Chat</h1>
       <ChatWindow messages={messages} 
                   handleChange={handleChange} 
@@ -80,7 +80,7 @@ function App() {
                   nickname={nickname}
                   bottomMessageRef={bottomMessage}
                   />
-    </>
+    </div>
   );
 }
 
