@@ -6,34 +6,35 @@ import './scss/chat-window-styles.scss';
 //const ENDPOINT = "http://localhost:3000";
 const ENDPOINT = "/";
 
+/**
+ * Main app component. 
+ */
 function App() {
   const [messages, setMessages] = useState([]);
-  const [connected, setConnected] = useState(false);
   const [message, setMessage] = useState('');
-  const [name, setName] = useState('');
   const [messageReceived, setMessageReceived] = useState(false);
   const [nickname, setNickname] = useState('anonymous');
   const [nickNameColor, setNickNameColor] = useState('#000000');
 
   const bottomMessage = useRef(null);
 
+  // Handle input changes for nickname and messages
   const handleChange = (inputType, event) => {
     switch (inputType) {
-      case 'name':
-        setName(event.target.value);
-        break;
       case 'message':
         setMessage(event.target.value);
         break;
       case 'nickname':
         setNickname(event.target.value);
         break;
+      default:
+        break;
     }
   };
 
+  //Callback when the send message button is clicked
   const sendMessage = () => {
 
-    console.log(nickname);
     let data = {
       'name': nickname,
       'message': message
@@ -46,21 +47,17 @@ function App() {
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
 
-    socket.on("connection", data => {
-      setConnected(true);
-    });
-
     socket.on("receivedMessage", data => {
       setMessageReceived(false);
       let updatedMessages = messages;
       updatedMessages.push(data);
       setMessages(updatedMessages);
       setMessageReceived(true);
-      console.log(messages);
     });
 
     //Set random nickname color
     setNickNameColor(getRandomColor());
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

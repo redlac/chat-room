@@ -1,4 +1,9 @@
-const express = require('express');
+/**
+ * Starts Node.js server, initializes Express and Socket.io instances. 
+ * Starts chat connection and enables chat listeners.
+ */
+
+ const express = require('express');
 const path = require('path');
 const port = process.env.PORT || 3000;
 const index = require("./routes/index");
@@ -17,7 +22,6 @@ if (process.env.NODE_ENV === 'production'){
     //just run the server for development
     app.use(index);
 }
-
 
 const server = require('http').Server(app);
 const io = require('socket.io')(server);

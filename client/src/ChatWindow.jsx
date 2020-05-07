@@ -6,8 +6,11 @@ import Grid from '@material-ui/core/Grid';
 import './scss/chat-window-styles.scss';
 import { Divider } from '@material-ui/core';
 
+/**
+ * Contains chat window UI 
+ * @param {props} props from App.js 
+ */
 export function ChatWindow(props) {
-    console.log(props.messages);
     return (
         <>
             <Grid container

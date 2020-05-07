@@ -3,8 +3,11 @@ import List from '@material-ui/core/List';
 import { MessageListItem } from './MessageListItem';
 import Typography from '@material-ui/core/Typography';
 
+/**
+ * Component to display all of the chat messages. 
+ * @param {props} props from ChatWindow.jsx 
+ */
 export function MessageList(props) {
-    console.log(props.messages);
     return (
         <List className={'message-list'}>
             {
