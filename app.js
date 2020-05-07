@@ -4,15 +4,18 @@ const port = process.env.PORT || 3000;
 const index = require("./routes/index");
 const app = express(); 
 
-app.use(index);
 
 if (process.env.NODE_ENV === 'production'){
+    //serve client build folder for production
     console.log("serving files from client/build");
     app.use(express.static(path.join(__dirname, 'client/build')));
 
     app.get('*', function(req, res) {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
       });
+}else{
+    //just run the server for development
+    app.use(index);
 }
 
 
