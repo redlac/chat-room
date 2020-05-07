@@ -3,6 +3,7 @@ import socketIOClient from 'socket.io-client';
 import { ChatWindow } from './ChatWindow';
 import './scss/chat-window-styles.scss';
 
+//const ENDPOINT = "http://localhost:3000";
 const ENDPOINT = "/";
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
 
   return (
     <>
+      <h1>Amazing Real-Time Chat</h1>
       <ChatWindow messages={messages} 
                   handleChange={handleChange} 
                   sendMessage={sendMessage}

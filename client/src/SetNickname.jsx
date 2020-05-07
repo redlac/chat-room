@@ -20,7 +20,7 @@ export function SetNickname(props) {
                   spacing={4}
                   >
                   <Grid container item justify="center">
-                <TextField className={"nickname-field"} label="Enter a nickname here" variant="outlined" size="small" onChange={e => handleChange('nickname', e)}/>
+                <TextField className={"nickname-field"} label="Enter a nickname here" variant="outlined" size="small" onChange={e => handleChange('nickname', e)} />
                 </Grid>
                   <Grid item >
                 </Grid>

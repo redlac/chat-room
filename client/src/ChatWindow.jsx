@@ -16,10 +16,7 @@ export function ChatWindow(props) {
                 alignItems="center"
                 spacing={3}
             >
-                <Grid container item xs>
-                    <h1>Amazing Real-Time Chat</h1>
-                </Grid>
-                <Grid container item xs={6}>
+                <Grid container item xs={8}>
                     <SetNickname handleChange={props.handleChange} />
                 </Grid>
                 <Divider className={'chat-divider'}/>
@@ -28,7 +25,7 @@ export function ChatWindow(props) {
                             <MessageList  messages={props.messages} nickNameColor={props.nickNameColor} nickname={props.nickname} bottomMessageRef={props.bottomMessageRef}/>
                     }
                 </Grid>
-                <Grid className={"message-input"} container item xs>
+                <Grid className={"message-input"} container item xs={12}>
                     <MessageInput  handleChange={props.handleChange} sendMessage={props.sendMessage}/>
                 </Grid>
             </Grid>

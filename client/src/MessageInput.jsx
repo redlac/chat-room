@@ -16,9 +16,9 @@ export function MessageInput(props) {
                 direction="row"
                 justify="center"
                 alignItems="center"
-                spacing={4}
+                spacing={1}
             >
-                <Grid item xs={6}>
+                <Grid item xs={7}>
                     <TextField id="outlined-basic" label="Enter message here" variant="outlined" size="small" fullWidth onChange={e => handleChange('message', e)} />
                 </Grid>
                 <Grid item >
