@@ -6,6 +6,16 @@ const app = express();
 
 app.use(index);
 
+if (process.env.NODE_ENV === 'production'){
+    console.log("serving files from client/build");
+    app.use(express.static(path.join(__dirname, 'client/build')));
+
+    app.get('*', function(req, res) {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+      });
+}
+
+
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
